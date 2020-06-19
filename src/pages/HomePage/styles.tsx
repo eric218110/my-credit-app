@@ -1,25 +1,30 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+import IInput from '../../components/Input';
 
 const { height, width } = Dimensions.get('screen');
 
 export const Container = styled.View`
-  height: ${height}px;
+  height: ${height * 0.8}px;
   width: ${width}px;
   z-index: 5;
-  justify-content: center;
   align-items: center;
+  margin: auto;
   position: absolute;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 export const ContentButtons = styled.View`
   flex: 2;
 `;
 
+export const MyInput = styled(IInput).attrs({})``;
+
 export const ContentText = styled.View`
   flex: 2;
-  justify-content: space-around;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 `;
 
 export const ContentDivider = styled.View`

@@ -6,20 +6,24 @@ import { HomePage } from '../pages/HomePage';
 import { LoginPage } from '../pages/LoginPage';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from '../theme/index';
+import { StatusBar } from 'react-native';
 
 const Stack = createStackNavigator();
 
 export const Routers: React.FC = () => (
-  <NavigationContainer>
-    <ThemeProvider theme={lightTheme}>
-      <Stack.Navigator
-        screenOptions={{ headerShown: false }}
-        headerMode={'screen'}
-        initialRouteName={'HomeScreen'}
-      >
-        <Stack.Screen name={'HomeScreen'} component={HomePage} />
-        <Stack.Screen name={'LoginScreen'} component={LoginPage} />
-      </Stack.Navigator>
-    </ThemeProvider>
-  </NavigationContainer>
+  <React.Fragment>
+    <StatusBar barStyle="light-content" backgroundColor={'#DB975D'} />
+    <NavigationContainer>
+      <ThemeProvider theme={lightTheme}>
+        <Stack.Navigator
+          screenOptions={{ headerShown: false }}
+          headerMode={'screen'}
+          initialRouteName={'LoginScreen'}
+        >
+          <Stack.Screen name={'HomeScreen'} component={HomePage} />
+          <Stack.Screen name={'LoginScreen'} component={LoginPage} />
+        </Stack.Navigator>
+      </ThemeProvider>
+    </NavigationContainer>
+  </React.Fragment>
 );

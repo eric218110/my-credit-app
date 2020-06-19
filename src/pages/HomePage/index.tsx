@@ -7,23 +7,17 @@ import {
   Divider,
   TextDivider,
 } from './styles';
-import { StatusBar } from 'react-native';
-import { LottieBackground } from '../../components/Background';
+import { Background } from '../../components/Background';
 import { Title, Subtitle } from '../../components/Text';
 import {
   ButtonFacebook,
   ButtonGmail,
   ButtonEmail,
-} from '../../components/Button/SocialButtons';
+} from '../../components/Button/ButtonsGroup';
 
 export const HomePage: React.FC = () => {
   return (
-    <React.Fragment>
-      <StatusBar barStyle="dark-content" />
-      <LottieBackground
-        position={{ bottom: false }}
-        source={require('../../assets/lottie/background_top')}
-      />
+    <Background>
       <Container>
         <ContentText>
           <Title>Bem vindo</Title>
@@ -41,10 +35,6 @@ export const HomePage: React.FC = () => {
           <ButtonEmail text={'Login com Email'} />
         </ContentButtons>
       </Container>
-      <LottieBackground
-        position={{ bottom: true }}
-        source={require('../../assets/lottie/background_bottom')}
-      />
-    </React.Fragment>
+    </Background>
   );
 };

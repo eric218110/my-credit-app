@@ -1,6 +1,14 @@
 import * as React from 'react';
 import { Button } from '../Buttons';
-import { Text, Content, ContentIcon, CircleIcon, Gmail } from './styles';
+import {
+  Text,
+  Content,
+  ContentIcon,
+  CircleIcon,
+  Gmail,
+  ContentLeft,
+  ContentIconLeft,
+} from './styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -29,7 +37,7 @@ export const ButtonEmail: React.FC<IProps> = ({ text }: IProps) => {
       <Content>
         <Text>{text}</Text>
         <ContentIcon backgroundColor={'#2F6834'}>
-            <Feather name={'mail'} color={'#FFF'} size={32} />
+          <Feather name={'mail'} color={'#FFF'} size={32} />
         </ContentIcon>
       </Content>
     </Button>
@@ -47,6 +55,19 @@ export const ButtonGmail: React.FC<IProps> = ({ text }: IProps) => {
           </CircleIcon>
         </ContentIcon>
       </Content>
+    </Button>
+  );
+};
+
+export const ButtonLogin: React.FC<IProps> = ({ text }: IProps) => {
+  return (
+    <Button backgroundColor={'#046F79'}>
+      <ContentLeft>
+        <ContentIconLeft backgroundColor={'#046F79'}>
+          <Feather name={'chevron-right'} color={'#FFF'} size={32} />
+        </ContentIconLeft>
+        <Text>{text}</Text>
+      </ContentLeft>
     </Button>
   );
 };
