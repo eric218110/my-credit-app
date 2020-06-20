@@ -19,12 +19,14 @@ interface IState {
   isLoading: boolean;
 }
 
-export const LoginPage: React.FC = () => {
+export const SignupPage: React.FC = () => {
+  const emailRef = React.createRef<NativeMethods>();
   const passwordRef = React.createRef<NativeMethods>();
+  const repeatPasswordRef = React.createRef<NativeMethods>();
   const [loading, setLoading] = React.useState<IState>({ isLoading: false });
   const navigation = useNavigation();
 
-  function handleLogin() {
+  function handleSignup() {
     setLoading({ isLoading: true });
   }
 
@@ -33,48 +35,54 @@ export const LoginPage: React.FC = () => {
       <Container>
         <Content>
           <ContentText>
-            <Title>Login</Title>
-            <Subtitle>Informe os dados abaixo</Subtitle>
+            <Title>Criar conta</Title>
+            <Subtitle>
+              Informe os dados abaixo para criar uma nova conta
+            </Subtitle>
           </ContentText>
           <ContentForm>
             <ContentInput>
               <Input
                 icon={{ name: 'account' }}
+                placeholder={'Informe seu nome'}
+                returnKeyType={'next'}
+                onSubmitEditing={() => emailRef.current?.focus()}
+              />
+              <Input
+                icon={{ name: 'email' }}
                 placeholder={'Informe seu usuário ou e-mail'}
                 returnKeyType={'next'}
-                onSubmitEditing={() => passwordRef.current?.focus()}
+                onSubmitEditing={() => repeatPasswordRef.current?.focus()}
+                ref={emailRef}
               />
               <Input
                 icon={{ name: 'lock' }}
-                placeholder={'Informe sua senha'}
+                placeholder={'Crie uma senha'}
+                returnKeyType={'next'}
+                onSubmitEditing={() => passwordRef.current?.focus()}
+                ref={repeatPasswordRef}
+              />
+              <Input
+                icon={{ name: 'lock' }}
+                placeholder={'repita sua senha'}
                 returnKeyType={'send'}
                 ref={passwordRef}
-                onSubmitEditing={handleLogin}
+                onSubmitEditing={handleSignup}
               />
             </ContentInput>
             <ButtonGroup
               positionBanner={'left'}
               loading={loading.isLoading}
-              icon={{ name: 'arrow-right' }}
-              title={'Login'}
-              onPress={handleLogin}
+              icon={{ name: 'plus' }}
+              title={'Criar conta'}
+              onPress={handleSignup}
             />
-            <Actions>
-              <ActionText>Esqueci minha senha</ActionText>
-            </Actions>
             <Actions
               onPress={() => {
-                navigation.navigate('HomeScreen');
+                navigation.navigate('LoginScreen');
               }}
             >
-              <ActionText>Entrar com facebook ou Gmail</ActionText>
-            </Actions>
-            <Actions
-              onPress={() => {
-                navigation.navigate('SignupScreen');
-              }}
-            >
-              <ActionText>Criar conta</ActionText>
+              <ActionText>Já possui conta? Entrar</ActionText>
             </Actions>
           </ContentForm>
         </Content>

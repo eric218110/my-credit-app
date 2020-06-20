@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 import IInput from '../../components/Input';
-
+import { ButtonGroup } from '../../components/Button';
 const { height, width } = Dimensions.get('screen');
 
 export const Container = styled.View`
@@ -47,3 +47,25 @@ export const Divider = styled.View`
   background-color: #c4c4c4;
   right: 0;
 `;
+
+export const ButtonGmail = styled(ButtonGroup).attrs({
+  backgroundColor: '#5885E4',
+  backgroundColorBanner: '#1976D2',
+  icon: { name: 'google', size: 38 },
+  title: 'Login com Email',
+  positionBanner: 'left',
+})``;
+
+export const ButtonFacebook = styled(ButtonGroup).attrs({
+  backgroundColor: '#415693',
+  backgroundColorBanner: '#152555',
+  icon: { name: 'facebook', size: 38 },
+  title: 'Login com Facebook',
+  positionBanner: 'left',
+})``;
+
+export const ButtonEmail = styled(ButtonGroup).attrs({
+  icon: { name: 'email-outline' },
+  title: 'Login com Email',
+  positionBanner: 'left',
+})``;
