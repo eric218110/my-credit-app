@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { Subtitle } from '../../components/Text';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
   justify-content: center;
   align-items: center;
