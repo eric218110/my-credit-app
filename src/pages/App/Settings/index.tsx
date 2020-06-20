@@ -3,10 +3,11 @@ import { Text } from 'react-native';
 
 import { Container } from './styles';
 
-export const HomeTab: React.FC = () => {
+export const SettingTab: React.FC = () => {
   return (
     <Container>
-      <Text>Home </Text>
+      <Text>Setting</Text>
     </Container>
   );
 };
+
