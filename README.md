@@ -21,7 +21,7 @@ $ npx react-native run-android
 ````bash
 # IOS
 $ npx react-native run-ios
-
+````
 ## Equipe
 
 * #### [Eric Silva](https://github.com/eric218110/)
