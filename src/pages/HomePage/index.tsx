@@ -9,6 +9,9 @@ import {
   ButtonGmail,
   ButtonFacebook,
   ButtonEmail,
+  ContainerLottie,
+  LottieField,
+  Content,
 } from './styles';
 import { Background } from '../../components/Background';
 import { Title, Subtitle } from '../../components/Text';
@@ -18,28 +21,37 @@ export const HomePage: React.FC = () => {
   const navigation = useNavigation();
   return (
     <Background>
+      <ContainerLottie>
+        <LottieField source={require('../../assets/lottie/card')}/>
+      </ContainerLottie>
+
       <Container>
-        <ContentText>
-          <Title>Bem vindo</Title>
-          <Subtitle>
-            Vamos te ajudar com seus cartões, primeiro realize login
-          </Subtitle>
-        </ContentText>
-        <ContentButtons>
-          <ButtonFacebook
-            loading={false}
-            onPress={() => console.log('testes')}
-          />
-          <ButtonGmail loading={false} onPress={() => console.log('testes')} />
-          <ContentDivider>
-            <TextDivider>ou</TextDivider>
-            <Divider />
-          </ContentDivider>
-          <ButtonEmail
-            loading={false}
-            onPress={() => navigation.navigate('LoginScreen')}
-          />
-        </ContentButtons>
+        <Content>
+          <ContentText>
+            <Title>Bem vindo</Title>
+            <Subtitle>
+              Vamos te ajudar com seus cartões, primeiro realize login
+            </Subtitle>
+          </ContentText>
+          <ContentButtons>
+            <ButtonFacebook
+              loading={false}
+              onPress={() => console.log('testes')}
+            />
+            <ButtonGmail
+              loading={false}
+              onPress={() => console.log('testes')}
+            />
+            <ContentDivider>
+              <TextDivider>ou</TextDivider>
+              <Divider />
+            </ContentDivider>
+            <ButtonEmail
+              loading={false}
+              onPress={() => navigation.navigate('LoginScreen')}
+            />
+          </ContentButtons>
+        </Content>
       </Container>
     </Background>
   );

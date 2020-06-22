@@ -26,6 +26,9 @@ export const LoginPage: React.FC = () => {
 
   function handleLogin() {
     setLoading({ isLoading: true });
+    setTimeout(() => {
+      navigation.navigate('TabsScreen');
+    }, 3000);
   }
 
   return (

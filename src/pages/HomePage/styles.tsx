@@ -1,28 +1,24 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
-import IInput from '../../components/Input';
 import { ButtonGroup } from '../../components/Button';
-const { height, width } = Dimensions.get('screen');
+import Lottie from 'lottie-react-native';
 
 export const Container = styled.View`
-  height: ${height * 0.8}px;
-  width: ${width}px;
-  z-index: 5;
-  align-items: center;
   margin: auto;
-  position: absolute;
   padding-left: 20px;
   padding-right: 20px;
+  flex: 2;
+`;
+
+export const Content = styled.View`
+  flex: 1;
 `;
 
 export const ContentButtons = styled.View`
-  flex: 2;
+  max-width: 100%;
+  align-items: center;
 `;
 
-export const MyInput = styled(IInput).attrs({})``;
-
 export const ContentText = styled.View`
-  flex: 2;
   justify-content: flex-end;
   margin-bottom: 20px;
 `;
@@ -46,19 +42,20 @@ export const Divider = styled.View`
   height: 1px;
   background-color: #c4c4c4;
   right: 0;
+  margin-left: 15px;
 `;
 
 export const ButtonGmail = styled(ButtonGroup).attrs({
-  backgroundColor: '#5885E4',
-  backgroundColorBanner: '#1976D2',
+  backgroundColor: '#28DA97',
+  backgroundColorBanner: '#196C59',
   icon: { name: 'google', size: 38 },
-  title: 'Login com Email',
+  title: 'Login com Gmail',
   positionBanner: 'left',
 })``;
 
 export const ButtonFacebook = styled(ButtonGroup).attrs({
-  backgroundColor: '#415693',
-  backgroundColorBanner: '#152555',
+  backgroundColor: '#2475FB',
+  backgroundColorBanner: '#0052CC',
   icon: { name: 'facebook', size: 38 },
   title: 'Login com Facebook',
   positionBanner: 'left',
@@ -69,3 +66,18 @@ export const ButtonEmail = styled(ButtonGroup).attrs({
   title: 'Login com Email',
   positionBanner: 'left',
 })``;
+
+export const ContainerLottie = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const LottieField = styled(Lottie).attrs({
+  autoPlay: true,
+  loop: false,
+  duration: 2000,
+  resizeMode: 'cover',
+})`
+  margin-right: 20px;
+`;

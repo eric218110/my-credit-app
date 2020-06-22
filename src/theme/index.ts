@@ -12,8 +12,8 @@ const theme: ITheme = {
     secundary: {
       shade01: '#6A29A6',
       shade02: '#aa6ae7',
-      shade03: '#24B4B3',
-      shade04: '#4bd8d8',
+      shade03: '#787CD0',
+      shade04: '#FFFAF4',
     },
   },
   text: {
