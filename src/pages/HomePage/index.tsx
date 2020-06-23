@@ -10,19 +10,20 @@ import {
   ButtonFacebook,
   ButtonEmail,
   ContainerLottie,
-  LottieField,
+  // LottieField,
   Content,
 } from './styles';
 import { Background } from '../../components/Background';
 import { Title, Subtitle } from '../../components/Text';
 import { useNavigation } from '@react-navigation/native';
+import { _handleLoginFacebook } from '../../provider/login/login.facebook';
 
 export const HomePage: React.FC = () => {
   const navigation = useNavigation();
   return (
     <Background>
       <ContainerLottie>
-        <LottieField source={require('../../assets/lottie/card')}/>
+        {/* <LottieField source={require('../../assets/lottie/card')}/> */}
       </ContainerLottie>
 
       <Container>
@@ -34,10 +35,7 @@ export const HomePage: React.FC = () => {
             </Subtitle>
           </ContentText>
           <ContentButtons>
-            <ButtonFacebook
-              loading={false}
-              onPress={() => console.log('testes')}
-            />
+            <ButtonFacebook loading={false} onPress={_handleLoginFacebook} />
             <ButtonGmail
               loading={false}
               onPress={() => console.log('testes')}

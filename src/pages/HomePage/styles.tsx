@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { ButtonGroup } from '../../components/Button';
-import Lottie from 'lottie-react-native';
+// import Lottie from 'lottie-react-native';
 
 export const Container = styled.View`
   margin: auto;
@@ -73,11 +73,11 @@ export const ContainerLottie = styled.View`
   align-items: center;
 `;
 
-export const LottieField = styled(Lottie).attrs({
-  autoPlay: true,
-  loop: false,
-  duration: 2000,
-  resizeMode: 'cover',
-})`
-  margin-right: 20px;
-`;
+// export const LottieField = styled(Lottie).attrs({
+//   autoPlay: true,
+//   loop: false,
+//   duration: 2000,
+//   resizeMode: 'cover',
+// })`
+//   margin-right: 20px;
+// `;
