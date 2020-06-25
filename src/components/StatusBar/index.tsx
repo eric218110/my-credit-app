@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-export const StatusBar = styled.StatusBar.attrs((props) => ({
+export const StatusBar = styled.StatusBar.attrs({
   barStyle: 'light-content',
-  backgroundColor: props.theme.current.pallete.secundary.shade02,
-}))``;
+  backgroundColor: '#4d50a2',
+})``;

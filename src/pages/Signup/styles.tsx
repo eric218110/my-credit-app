@@ -22,7 +22,7 @@ export const ContentText = styled.View`
 
 export const ContentInput = styled.View`
   justify-content: flex-end;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 `;
 
 export const ContentForm = styled.View``;

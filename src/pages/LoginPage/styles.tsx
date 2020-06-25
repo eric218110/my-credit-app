@@ -22,19 +22,18 @@ export const ContentText = styled.View`
 
 export const ContentInput = styled.View`
   justify-content: flex-end;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 `;
-
-export const ContentForm = styled.View``;
 
 export const Actions = styled.TouchableOpacity`
   margin-top: 20px;
   align-items: center;
   width: 100%;
+  align-self: center;
 `;
 
 export const ActionText = styled(Subtitle)`
-  color: ${(props) => props.theme.current.text.shade04};
+  color: ${(props) => props.theme.current.text.shade02};
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 14px;

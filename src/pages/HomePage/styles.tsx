@@ -6,11 +6,9 @@ export const Container = styled.View`
   margin: auto;
   padding-left: 20px;
   padding-right: 20px;
-  flex: 2;
-`;
-
-export const Content = styled.View`
   flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ContentButtons = styled.View`
@@ -66,18 +64,3 @@ export const ButtonEmail = styled(ButtonGroup).attrs({
   title: 'Login com Email',
   positionBanner: 'left',
 })``;
-
-export const ContainerLottie = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-// export const LottieField = styled(Lottie).attrs({
-//   autoPlay: true,
-//   loop: false,
-//   duration: 2000,
-//   resizeMode: 'cover',
-// })`
-//   margin-right: 20px;
-// `;

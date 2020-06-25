@@ -7,13 +7,13 @@ interface IProps {
 }
 
 export const ContainerTab = styled.View`
-  background-color: ${(props) => props.theme.current.pallete.secundary.shade04};
+  background-color: ${(props) => props.theme.current.text.shade02};
   flex-direction: row;
   height: 55px;
 `;
 
 export const ContainerItem = styled(Ripple).attrs((props) => ({
-  rippleColor: props.theme.current.pallete.secundary.shade01,
+  rippleColor: props.theme.current.pallete.primary.shade01,
   rippleDuration: 700,
   rippleFades: true,
 }))`
@@ -31,19 +31,6 @@ export const TabItemContainer = styled.View`
   align-items: center;
 `;
 
-export const TabItemText = styled.Text<IProps>`
-  color: ${(props) =>
-    props.active
-      ? props.theme.current.pallete.secundary.shade01
-      : props.theme.current.text.shade03};
-  font-weight: bold;
-  border-bottom-color: ${(props) =>
-    props.active
-      ? props.theme.current.pallete.secundary.shade01
-      : 'transparent'};
-  border-bottom-width: ${(props) => (props.active ? '3px' : '0')};
-  padding: 0px 5px 0px 5px;
-`;
 export const TabItemIcon = styled(MaterialCommunityIcons).attrs({
   size: 25,
 })<IProps>`
@@ -51,11 +38,12 @@ export const TabItemIcon = styled(MaterialCommunityIcons).attrs({
     props.active
       ? props.theme.current.pallete.secundary.shade01
       : props.theme.current.text.shade03};
-  border-bottom-color: ${(props) =>
-    props.active
-      ? props.theme.current.pallete.secundary.shade01
-      : 'transparent'};
-  border-bottom-width: ${(props) => (props.active ? '3px' : '0')};
   padding: 0px 5px 3px 5px;
 `;
-export const TabItemAdd = styled.View``;
+
+export const IsItemActive = styled.View`
+  height: 6px;
+  width: 6px;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.current.pallete.secundary.shade01};
+`;

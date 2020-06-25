@@ -10,7 +10,21 @@
 
 import React from 'react';
 import { Routers } from './src/routes';
+import { StatusBar } from './src/components/StatusBar';
+import { NavigationContainer } from '@react-navigation/native';
+import { AuthProvider } from './src/contexts/auth';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme } from './src/theme';
 
-const App: React.FC = () => <Routers />;
+const App: React.FC = () => (
+  <ThemeProvider theme={lightTheme}>
+    <StatusBar />
+    <NavigationContainer>
+      <AuthProvider>
+        <Routers />
+      </AuthProvider>
+    </NavigationContainer>
+  </ThemeProvider>
+);
 
 export default App;
