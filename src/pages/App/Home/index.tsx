@@ -13,7 +13,6 @@ export const HomeTab: React.FC = () => {
         style={{ width: 100, height: 100 }}
         source={{ uri: user?.photoURL }}
       />
-      {console.log(user)}
       <Button
         title={'SAIR'}
         onPress={() => {
