@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export const ContainerTab = styled.View`
-  background-color: ${(props) => props.theme.current.text.shade02};
+  background-color: ${(props) => props.theme.current.text.shade01};
   flex-direction: row;
   height: 55px;
 `;

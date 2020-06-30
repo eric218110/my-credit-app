@@ -1,24 +1,57 @@
 import * as React from 'react';
 import { Background } from '../../../components/Background';
 import { AuthContext } from '../../../contexts/auth';
-import { Button, Text, Image } from 'react-native';
+import {
+  Container,
+  Header,
+  Username,
+  Hello,
+  Name,
+  Avatar,
+  ContainerCreditCard,
+  ListCreditCard,
+  NewCreditCard,
+  Plus,
+} from './styles';
+import CreditCard from '../../../components/CreditCard';
 
 export const HomeTab: React.FC = () => {
-  const { signOut, user } = React.useContext(AuthContext);
+  const { user } = React.useContext(AuthContext);
   return (
     <Background>
-      <Text>{user?.email}</Text>
-      <Text>{user?.name}</Text>
-      <Image
-        style={{ width: 100, height: 100 }}
-        source={{ uri: user?.photoURL }}
-      />
-      <Button
-        title={'SAIR'}
-        onPress={() => {
-          signOut();
-        }}
-      />
+      <Container>
+        <Header>
+          <Username>
+            <Hello>Olá, boa noite</Hello>
+            <Name>{user?.name}!</Name>
+          </Username>
+          <Avatar source={{ uri: user?.photoURL }} />
+        </Header>
+        <ContainerCreditCard>
+          <NewCreditCard>
+            <Plus>+</Plus>
+          </NewCreditCard>
+          <ListCreditCard>
+            <CreditCard
+              card={{
+                flagIconName: 'cc-visa',
+                cardName: 'viagens',
+                cardNumber: '218110',
+                balance: '24.55',
+              }}
+            />
+            <CreditCard
+              card={{
+                backgroundCard: '#49148a',
+                flagIconName: 'cc-mastercard',
+                cardName: 'compras',
+                cardNumber: '218110',
+                balance: '24.55',
+              }}
+            />
+          </ListCreditCard>
+        </ContainerCreditCard>
+      </Container>
     </Background>
   );
 };
