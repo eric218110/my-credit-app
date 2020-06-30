@@ -1,11 +1,8 @@
 import styled from 'styled-components/native';
-import LinearGradient from 'react-native-linear-gradient';
 
-export const Background = styled(LinearGradient).attrs((props) => ({
-  colors: [
-    props.theme.current.pallete.secundary.shade02,
-    props.theme.current.pallete.secundary.shade01,
-  ],
-}))`
+export const Background = styled.ImageBackground.attrs({
+  source: require('../../assets/background/background.png'),
+  queryCache: 'disk',
+})`
   flex: 1;
 `;

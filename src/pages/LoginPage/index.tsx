@@ -1,9 +1,8 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import {
   Container,
   Content,
   ContentText,
-  ContentForm,
   ContentInput,
   Actions,
   ActionText,
@@ -14,6 +13,7 @@ import { NativeMethods } from 'react-native';
 import { ButtonGroup } from '../../components/Button';
 import Input from '../../components/Input';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../contexts/auth';
 
 interface IState {
   isLoading: boolean;
@@ -24,11 +24,12 @@ export const LoginPage: React.FC = () => {
   const [loading, setLoading] = React.useState<IState>({ isLoading: false });
   const navigation = useNavigation();
 
-  function handleLogin() {
+  const { signIn } = useContext(AuthContext);
+
+  async function handleLogin() {
     setLoading({ isLoading: true });
-    setTimeout(() => {
-      navigation.navigate('TabsScreen');
-    }, 3000);
+    await signIn();
+    setLoading({ isLoading: false });
   }
 
   return (
@@ -39,47 +40,48 @@ export const LoginPage: React.FC = () => {
             <Title>Login</Title>
             <Subtitle>Informe os dados abaixo</Subtitle>
           </ContentText>
-          <ContentForm>
-            <ContentInput>
-              <Input
-                icon={{ name: 'account' }}
-                placeholder={'Informe seu usuário ou e-mail'}
-                returnKeyType={'next'}
-                onSubmitEditing={() => passwordRef.current?.focus()}
-              />
-              <Input
-                icon={{ name: 'lock' }}
-                placeholder={'Informe sua senha'}
-                returnKeyType={'send'}
-                ref={passwordRef}
-                onSubmitEditing={handleLogin}
-              />
-            </ContentInput>
-            <ButtonGroup
-              positionBanner={'left'}
-              loading={loading.isLoading}
-              icon={{ name: 'arrow-right' }}
-              title={'Login'}
-              onPress={handleLogin}
+          <ContentInput>
+            <Input
+              icon={{ name: 'account' }}
+              placeholder={'Informe seu usuário ou e-mail'}
+              returnKeyType={'next'}
+              onSubmitEditing={() => passwordRef.current?.focus()}
+              autoCorrect={false}
+              keyboardType={'email-address'}
             />
-            <Actions>
-              <ActionText>Esqueci minha senha</ActionText>
-            </Actions>
-            <Actions
-              onPress={() => {
-                navigation.navigate('HomeScreen');
-              }}
-            >
-              <ActionText>Entrar com facebook ou Gmail</ActionText>
-            </Actions>
-            <Actions
-              onPress={() => {
-                navigation.navigate('SignupScreen');
-              }}
-            >
-              <ActionText>Criar conta</ActionText>
-            </Actions>
-          </ContentForm>
+            <Input
+              icon={{ name: 'lock' }}
+              placeholder={'Informe sua senha'}
+              returnKeyType={'send'}
+              ref={passwordRef}
+              onSubmitEditing={handleLogin}
+              secureTextEntry
+            />
+          </ContentInput>
+          <ButtonGroup
+            positionBanner={'left'}
+            loading={loading.isLoading}
+            icon={{ name: 'arrow-right' }}
+            title={'Login'}
+            onPress={handleLogin}
+          />
+          <Actions>
+            <ActionText>Esqueci minha senha</ActionText>
+          </Actions>
+          <Actions
+            onPress={() => {
+              navigation.navigate('HomeScreen');
+            }}
+          >
+            <ActionText>Entrar com facebook ou Gmail</ActionText>
+          </Actions>
+          <Actions
+            onPress={() => {
+              navigation.navigate('SignupScreen');
+            }}
+          >
+            <ActionText>Criar conta</ActionText>
+          </Actions>
         </Content>
       </Container>
     </Background>

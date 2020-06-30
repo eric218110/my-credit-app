@@ -1,79 +1,57 @@
-import React from 'react';
-
+import * as React from 'react';
+import { Background } from '../../../components/Background';
+import { AuthContext } from '../../../contexts/auth';
 import {
   Container,
-  StatusBar,
-  HeaderContainer,
-  BodyContainer,
-  HeaderContentTop,
-  BalanceContainer,
-  BalanceContent,
-  BalanceTitle,
-  BalanceSubTitle,
-  IconEye,
+  Header,
+  Username,
+  Hello,
+  Name,
   Avatar,
-  HeaderContentBottom,
-  ListActionsContent,
-  ActionItem,
-  ActionIcon,
-  ActionText,
-  Balance,
+  ContainerCreditCard,
+  ListCreditCard,
+  NewCreditCard,
+  Plus,
 } from './styles';
+import CreditCard from '../../../components/CreditCard';
 
 export const HomeTab: React.FC = () => {
+  const { user } = React.useContext(AuthContext);
   return (
-    <React.Fragment>
-      <StatusBar />
+    <Background>
       <Container>
-        <HeaderContainer>
-          <HeaderContentTop>
-            <BalanceContainer>
-              <BalanceContent>
-                <BalanceTitle>R$ 2.589,05</BalanceTitle>
-                <Balance>
-                  <BalanceSubTitle>Saldo atual</BalanceSubTitle>
-                  <IconEye />
-                </Balance>
-              </BalanceContent>
-              <Avatar
-                source={{
-                  uri:
-                    'https://avatars3.githubusercontent.com/u/33959079?s=400&u=5171e4ffba05e99e6ff44643f9c32bd6c2b87bd3&v=4',
-                }}
-              />
-            </BalanceContainer>
-          </HeaderContentTop>
-          <HeaderContentBottom>
-            <ListActionsContent>
-              <ActionItem>
-                <ActionIcon />
-                <ActionText>Boraaa</ActionText>
-              </ActionItem>
-              <ActionItem>
-                <ActionIcon />
-                <ActionText>Boraaa</ActionText>
-              </ActionItem>
-              <ActionItem>
-                <ActionIcon />
-                <ActionText>Boraaa</ActionText>
-              </ActionItem>
-              <ActionItem>
-                <ActionIcon />
-                <ActionText>Boraaa</ActionText>
-              </ActionItem>
-              <ActionItem>
-                <ActionIcon />
-                <ActionText>Boraaa</ActionText>
-              </ActionItem>
-              <ActionItem>
-                <ActionIcon />
-                <ActionText>Boraaa</ActionText>
-              </ActionItem>
-            </ListActionsContent>
-          </HeaderContentBottom>
-        </HeaderContainer>
-        <BodyContainer></BodyContainer>
+        <Header>
+          <Username>
+            <Hello>Olá, boa noite</Hello>
+            <Name>{user?.name}!</Name>
+          </Username>
+          <Avatar source={{ uri: user?.photoURL }} />
+        </Header>
+        <ContainerCreditCard>
+          <NewCreditCard>
+            <Plus>+</Plus>
+          </NewCreditCard>
+          <ListCreditCard>
+            <CreditCard
+              card={{
+                flagIconName: 'cc-visa',
+                cardName: 'viagens',
+                cardNumber: '218110',
+                balance: '24.55',
+              }}
+            />
+            <CreditCard
+              card={{
+                backgroundCard: '#49148a',
+                flagIconName: 'cc-mastercard',
+                cardName: 'compras',
+                cardNumber: '218110',
+                balance: '24.55',
+              }}
+            />
+          </ListCreditCard>
+        </ContainerCreditCard>
       </Container>
-    </React.Fragment>
+    </Background>
   );
 };
