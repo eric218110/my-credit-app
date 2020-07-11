@@ -1,17 +1,16 @@
 import * as React from 'react';
 import * as auth from '../services/auth';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import { apiAxios } from '../services/api';
 interface IAuthProviderProps {
   children: React.ReactNode;
 }
-
 interface IUser {
+  id: string;
   name: string;
   email: string;
   photoURL: string;
 }
-
 interface IAuthContextProps {
   signed: boolean;
   user: IUser | null;
@@ -28,6 +27,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({
   children,
 }: IAuthProviderProps) => {
   const [userContext, setUserContext] = React.useState<IUser>({
+    id: '',
     email: '',
     name: '',
     photoURL: '',
@@ -35,11 +35,14 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({
 
   React.useEffect(() => {
     async function loadStorage() {
-      const UserStorage = await AsyncStorage.getItem('@MyCredit:user');
-      const Tokekstorage = await AsyncStorage.getItem('@MyCredit:token');
+      const userStorage = await AsyncStorage.getItem('@MyCredit:user');
+      const tokenStorage = await AsyncStorage.getItem('@MyCredit:token');
+      const idStorage = await AsyncStorage.getItem('@MyCredit:id');
 
-      if (UserStorage && Tokekstorage) {
-        setUserContext(JSON.parse(UserStorage));
+      if (userStorage && tokenStorage && idStorage) {
+        setUserContext(JSON.parse(userStorage));
+        apiAxios.defaults.headers.common['Authorization'] = `Bearer ${tokenStorage}`;
+        apiAxios.defaults.headers.common['userid'] = idStorage;
       }
     }
 
@@ -53,11 +56,13 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({
 
     await AsyncStorage.setItem('@MyCredit:user', JSON.stringify(user));
     await AsyncStorage.setItem('@MyCredit:token', token);
+    await AsyncStorage.setItem('@MyCredit:id', user.id);
   }
 
   async function signOut(): Promise<void> {
     AsyncStorage.clear().then(() => {
       setUserContext({
+        id: '',
         email: '',
         name: '',
         photoURL: '',
@@ -70,19 +75,22 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({
   }): Promise<void> {
     const { data } = paramsUser;
     const response = await auth.signInWithFacebook({
+      id: data.id,
       email: data.email,
-      name: data.email,
+      name: data.name,
       photoURL: data.photoURL,
     });
 
     setUserContext({
+      id: response.user.id,
       email: response.user.email,
       name: response.user.name,
       photoURL: response.user.photoURL,
     });
+
     await AsyncStorage.setItem('@MyCredit:user', JSON.stringify(response.user));
     await AsyncStorage.setItem('@MyCredit:token', response.token);
-    console.log(userContext);
+    await AsyncStorage.setItem('@MyCredit:id', response.user.id.toString());
   }
 
   return (

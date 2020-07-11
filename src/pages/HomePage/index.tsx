@@ -42,6 +42,7 @@ export const HomePage: React.FC = () => {
                 } else {
                   signInWithFacebook({
                     data: {
+                      id: '',
                       name: result.name,
                       email: result.email,
                       photoURL: result.picture.data.url,
@@ -76,6 +77,7 @@ export const HomePage: React.FC = () => {
             onPress={async () => {
               signInWithFacebook({
                 data: {
+                  id: '',
                   name: 'Eric Silva',
                   email: 'ericsilvaccp@gmail.com',
                   photoURL:

@@ -1,6 +1,7 @@
 import { apiAxios } from './api';
 
 interface IUser {
+  id: string;
   name: string;
   email: string;
   photoURL: string;
@@ -16,6 +17,7 @@ export function signIn(): Promise<IResponse> {
       resolve({
         token: 'dbdgbdgbdgbdgbdb',
         user: {
+          id: '5',
           name: 'Eric Silva',
           email: 'ericsilvaccp@gmail.com',
           photoURL: 'string',
@@ -30,14 +32,13 @@ export async function signInWithFacebook(user: IUser): Promise<IResponse> {
 
   const userResponse: IResponse = {
     user: {
-      email: response.data.email,
-      name: response.data.name,
-      photoURL: response.data.photoURL,
+      id: response.data.user.id,
+      email: response.data.user.email,
+      name: response.data.user.name,
+      photoURL: response.data.user.photoURL,
     },
-    token: response.data.token,
+    token: response.data.user.token,
   };
-
-  console.log(response.data.photoURL)
 
   return userResponse;
 }

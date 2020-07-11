@@ -17,7 +17,6 @@ export const Container = styled(Ripple).attrs((props) => ({
   align-items: center;
   width: 100%;
   margin: 3px;
-  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
